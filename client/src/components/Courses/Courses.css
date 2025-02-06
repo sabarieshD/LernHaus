@@ -1,0 +1,93 @@
+.courses {
+  padding: 20px;
+  margin-top: 10%;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 45px;
+}
+
+.course-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Default: 4 courses per row */
+  gap: 30px;
+  justify-items: center;
+}
+
+.course-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+  text-align: start;
+  box-shadow: 7px 6px 9px rgba(0, 0, 0, 0.1);
+}
+
+.course-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.course-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.course-card p {
+  font-size: 0.9rem;
+  margin: 5px 0;
+  color: rgb(81, 80, 80);
+}
+
+.course-card .price {
+  text-align: end;
+  color: rgb(46, 144, 138);
+  font-weight: bolder;
+  font-size: x-large;
+}
+
+.course-card .card-bottom {
+  display: flex;
+  margin-top: 8%;
+  margin-bottom: -5%;
+  font-size: small;
+  justify-content: space-between;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .course-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .course-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .course-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .course-card {
+    padding: 15px;
+    max-width: 90%; /* Increased width for better use of screen space */
+    margin: 0 auto; /* Center the card */
+  }
+}
+
+@media (max-width: 400px) {
+  .course-card {
+    max-width: 95%; /* Further increased width for very small screens */
+  }
+}

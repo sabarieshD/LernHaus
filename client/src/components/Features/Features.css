@@ -1,0 +1,109 @@
+.features-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 10% 0;
+  background-color: rgb(255, 255, 255);
+  font-family: Arial, sans-serif;
+}
+
+.features-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1000px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Left Side: Image */
+.features-image-section {
+  flex: 1;
+  background: linear-gradient(to bottom right, #eaf4ff, #fff);
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  justify-content: center; /* Centers the image horizontally */
+  align-items: center; /* Centers the image vertically */
+}
+
+/* Ensure Image is Responsive */
+.badge img {
+  width: 100%;
+  max-width: 350px; /* Prevents it from being too large */
+  height: auto;
+}
+
+/* Right Side: Content */
+.features-content-section {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.features-content-section h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+  text-align: start;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+}
+
+.features-list li {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .features-card {
+    flex-direction: column; /* Stack image & content vertically */
+    text-align: center;
+  }
+
+  .features-image-section {
+    width: 100%;
+    padding: 20px 10px;
+  }
+
+  .badge img {
+    max-width: 80%; /* Adjust image size for smaller screens */
+  }
+
+  .features-content-section {
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .features-container {
+    padding: 15px;
+    margin: 5% 0;
+  }
+
+  .features-card {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .badge img {
+    max-width: 70%;
+  }
+}

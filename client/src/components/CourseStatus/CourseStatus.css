@@ -1,0 +1,149 @@
+.course-status-container {
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  padding-bottom: 45px;
+}
+
+/* Header */
+.course-status-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.course-status-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.course-status-details {
+  color: #3b82f6;
+  font-size: 0.875rem;
+  font-weight: medium;
+  text-decoration: none;
+}
+
+/* Content Layout */
+.course-status-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.course-status-labels {
+  flex: 1;
+}
+
+.course-status-chart-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* List Items */
+.course-status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.course-status-item-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.course-status-item-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.course-status-item-text {
+  font-weight: medium;
+  color: #333;
+}
+
+.course-status-item-percentage {
+  font-weight: bold;
+}
+
+.course-status-item-count {
+  color: #6b7280;
+}
+
+/* Chart Placeholder */
+.course-status-chart-placeholder {
+  width: 250px;
+  height: 250px;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1024px) { /* Tablets */
+  .course-status-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .course-status-chart-container {
+    width: 100%;
+  }
+
+  .course-status-chart-placeholder {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) { /* Mobile Screens */
+  .course-status-container {
+    padding: 15px;
+  }
+
+  .course-status-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .course-status-title {
+    font-size: 1.25rem;
+  }
+
+  .course-status-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .course-status-chart-placeholder {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) { /* Small Phones */
+  .course-status-title {
+    font-size: 1.1rem;
+  }
+
+  .course-status-details {
+    font-size: 0.75rem;
+  }
+
+  .course-status-chart-placeholder {
+    width: 150px;
+    height: 150px;
+  }
+}

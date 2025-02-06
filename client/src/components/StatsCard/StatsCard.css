@@ -1,0 +1,112 @@
+/* Stats card - Flexible & Responsive */
+.stats-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; /* Center align items */
+  padding: 20px 0;
+  gap: 3%; /* Reduce excessive gaps */
+  height: auto; /* Adjust height dynamically */
+  min-height: 200px;
+  border-radius: 8px;
+  background-color: transparent;
+  width: 100%;
+  max-width: 900px; /* Prevent excessive stretching */
+  margin: 0 auto; /* Center it horizontally */
+}
+
+/* Data container - Wrapping & Spacing */
+.data-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  gap: 10px; /* Add spacing */
+  justify-content: center;
+  width: 100%;
+}
+
+/* Data section - Flexible Sizing */
+.data-section {
+  margin-bottom: 15px;
+  flex: 1 1 300px; /* Allows sections to adapt */
+  min-width: 280px;
+}
+
+/* Headings */
+.stats-card h3 {
+  margin: 0;
+  font-size: clamp(14px, 1.2vw, 16px); /* Ensures text scales well */
+  color: #333;
+}
+
+/* Positive & Negative Changes */
+.stats-card .change {
+  font-size: clamp(12px, 1vw, 14px);
+  color: #4caf50; /* Green for positive changes */
+}
+
+.stats-card .change.negative {
+  color: #f44336; /* Red for negative changes */
+}
+
+/* Chart Container */
+.chart-container {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.chart-container h4 {
+  font-size: clamp(16px, 1.4vw, 18px);
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .stats-card {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .data-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chart-container {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-card {
+    padding: 15px;
+  }
+  
+  .data-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .chart-container {
+    margin-top: 15px;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-card {
+    width: 90%;
+    padding: 10px;
+  }
+  
+  .stats-card h3 {
+    font-size: 14px;
+  }
+  
+  .chart-container h4 {
+    font-size: 16px;
+  }
+}

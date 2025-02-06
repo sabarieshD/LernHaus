@@ -1,0 +1,84 @@
+  .whole-wrap {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(234, 234, 243);
+  }
+  .user-details-container {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    padding: 20px;
+    color: #333;
+    /* Centering */
+    justify-content: center;  /* Centers it horizontally */
+    align-items: center;      /* Centers it vertically */
+    width: 100%;              /* Ensures it takes the full width */
+  }
+
+  @media (max-width: 1024px) {
+    .user-details-container {
+      gap: 30px; /* Reduce the gap for medium screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .user-details-container {
+      flex-direction: column; /* Stack items on small screens */
+      gap: 20px; /* Reduce gap for better spacing */
+      align-items: center; /* Keep everything centered */
+      text-align: center; /* Align text properly */
+    }
+  }
+    
+    /* Top Section Styling */
+    .top-section {
+      display: flex;
+      justify-content: column;
+      gap: 20px;
+      justify-content: space-around;
+    }
+    
+    .profile-card-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10rem;
+    }
+    
+    .stats-scores-wrapper {
+      flex: 1;
+      /* margin-left: 20%; */
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 400px;
+    }
+    
+    .score-card {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Bottom Section Styling */
+    .bottom-section {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    
+    /* Adjustments for Payment Sections */
+    .bottom-section > * {
+      flex: 1;
+    }
+    
+    /* Responsive Design */
+    /* @media (max-width: 768px) {
+      .top-section,
+      .bottom-section {
+        flex-direction: column;
+      }
+    } */
+    

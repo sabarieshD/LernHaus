@@ -1,0 +1,160 @@
+.dashboard {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  padding-bottom: 30px;
+  width: 100%;
+  max-width: 660px;
+  margin: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.header h3 {
+  font-size: x-large;
+  font-weight: bolder;
+  margin: 0;
+}
+
+.header a {
+  font-size: 14px;
+  color: #2196F3;
+  text-decoration: none;
+}
+
+/* Content Wrapper */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Reduced for better spacing */
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Stats Section */
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%; /* Ensures flexibility */
+  max-width: 300px; /* Limits width for better alignment */
+}
+
+/* Individual Stat */
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.stat p {
+  margin: 0;
+  font-size: 18px;
+  flex: 1;
+}
+
+.stat h4 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+/* Change Indicator */
+.stat .change {
+  font-size: 12px;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.change.positive {
+  color: #4CAF50;
+  background: #E8F5E9;
+}
+
+.change.negative {
+  color: #F44336;
+  background: #FFEBEE;
+}
+
+.change.neutral {
+  color: #757575;
+  background: #F5F5F5;
+}
+
+/* Chart Wrapper */
+.chart {
+  width: 100%;
+  max-width: 400px; /* Ensures it doesn’t stretch too much */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .dashboard {
+    max-width: 100%;
+  }
+  
+  .chart {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 12px;
+    max-width: 95%;
+  }
+
+  .stats {
+    max-width: 250px;
+  }
+
+  .chart {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .header h3 {
+    font-size: 1.2rem;
+  }
+
+  .header a {
+    font-size: 12px;
+  }
+
+  .stat p {
+    font-size: 16px;
+  }
+
+  .stat h4 {
+    font-size: 17px;
+  }
+
+  .chart {
+    width: 100%;
+    max-width: 280px;
+  }
+  .content {
+    flex-direction: column;
+  }
+}

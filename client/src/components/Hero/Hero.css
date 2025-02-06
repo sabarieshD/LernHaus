@@ -1,0 +1,130 @@
+/* Hero Section - Fullscreen & Centered */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: rgb(255, 255, 255);
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Hero Content - Column for Small, Row for Large */
+.hero-content {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+/* Hero Text */
+.hero-text {
+  max-width: 600px;
+  width: 100%;
+}
+
+.hero-text h1 {
+  font-size: clamp(1.8rem, 5vw, 3rem); /* Scales between 1.8rem - 3rem */
+  font-weight: bold;
+  line-height: 1.4;
+  color: #333;
+  text-align: start;
+}
+
+.hero-text h1 span {
+  display: block;
+  color: #007bff;
+}
+
+.hero-text p {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: #666;
+  margin: 1rem 0;
+}
+
+/* Hero Button */
+.hero-button {
+  padding: 0.8rem 1.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #0056b3;
+}
+
+/* Hero Image */
+.hero-image {
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .hero-content {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 3rem;
+    padding: 0 2rem;
+  }
+
+  .hero-text {
+    flex: 1;
+  }
+
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  .hero-text p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 1.5rem;
+  }
+
+  .hero-content {
+    gap: 1.5rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-button {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+  }
+}
