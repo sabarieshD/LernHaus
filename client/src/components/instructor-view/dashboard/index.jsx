@@ -1,3 +1,6 @@
+import DashboardStats from "@/components/DashboardStats/DashboardStats";
+import InteractiveBubbleChart from "@/components/InteractiveBubbleChart/InteractiveBubbleChart";
+import StatsComponents from "@/components/StatsComponents/StatsComponents";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
@@ -7,7 +10,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import UserLocationMap from "@/components/UserLocationMap/UserLocationMap";
+import WeeklyGoals from "@/components/WeeklyGoals/WeeklyGoals";
 import { DollarSign, Users } from "lucide-react";
+import "./Styles.css"
 
 function InstructorDashboard({ listOfCourses }) {
   function calculateTotalStudentsAndProfit() {
@@ -104,6 +110,13 @@ function InstructorDashboard({ listOfCourses }) {
           </div>
         </CardContent>
       </Card>
+      <DashboardStats/>
+      <StatsComponents/>
+      <div className="bubble-userlocationmap">
+          <InteractiveBubbleChart/>
+          <UserLocationMap/>
+      </div>
+      <WeeklyGoals/>
     </div>
   );
 }

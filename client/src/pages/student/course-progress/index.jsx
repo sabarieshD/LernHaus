@@ -23,6 +23,7 @@ import { Check, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import Confetti from "react-confetti";
 import { useNavigate, useParams } from "react-router-dom";
+// import ForumPage from "./ForumPage";
 
 function StudentViewCourseProgressPage() {
   const navigate = useNavigate();
@@ -161,6 +162,7 @@ function StudentViewCourseProgressPage() {
           <div className="p-6 bg-[#1c1d1f]">
             <h2 className="text-2xl font-bold mb-2">{currentLecture?.title}</h2>
           </div>
+          {/* <ForumPage/> */}
         </div>
         <div
           className={`fixed top-[64px] right-0 bottom-0 w-[400px] bg-[#1c1d1f] border-l border-gray-700 transition-all duration-300 ${

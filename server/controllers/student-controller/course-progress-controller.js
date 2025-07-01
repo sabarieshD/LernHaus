@@ -187,7 +187,7 @@ const downloadCertificate = async (req, res) => {
   try {
     const { userId, courseId } = req.params;
 
-    const courseAndStudentResponse = await axios.get(`http://localhost:5000/student/course-progress/course/${courseId}/student/${userId}`);
+    const courseAndStudentResponse = await axios.get(`${process.env.SERVER_URL}/student/course-progress/course/${courseId}/student/${userId}`);
     const { courseName, studentName } = courseAndStudentResponse.data;
 
     if (!courseName || !studentName) {
@@ -209,7 +209,7 @@ const downloadCertificate = async (req, res) => {
     });
 
     const filePath = path.join(__dirname, `temp-certificate-${certificateId}.pdf`);
-    const logoPath = path.join(__dirname, "../../asserts/image.png");
+    const logoPath = path.join(__dirname, "../../asserts/LMS_LOGO.png");
     const signaturePath = path.join(__dirname, "../../asserts/sign-removebg.png");
 
     const writeStream = fs.createWriteStream(filePath);

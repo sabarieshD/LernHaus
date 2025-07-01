@@ -1,6 +1,42 @@
 const nodemailer = require('nodemailer');
 const axios = require('axios');
 const moment = require('moment');
+const ManualNotification = require('../../models/Manual_Notification')
+
+const getNotificationsByUserId = async (req, res) => {
+  try {
+    const { id } = req.body;
+
+    // Validate input
+    if (!id) {
+      return res.status(400).json({ 
+        success: false,
+        message: "User ID is required in request body" 
+      });
+    }
+
+    // No need to find user first if recipientId matches directly
+    const notifications = await ManualNotification.find({
+      recipientId: id // Directly use the ID from request
+    })
+    .sort({ createdAt: -1 })
+    .lean();
+
+    return res.status(200).json({
+      success: true,
+      count: notifications.length,
+      data: notifications
+    });
+
+  } catch (error) {
+    console.error("Error fetching notifications:", error);
+    return res.status(500).json({ 
+      success: false,
+      message: "Internal server error",
+      error: error.message 
+    });
+  }
+};
 
 const sendEmailNotification = async (studentEmail, title, message) => {
   const transporter = nodemailer.createTransport({
@@ -27,7 +63,7 @@ const sendEmailNotification = async (studentEmail, title, message) => {
   }
 };
 
-exports.sendCourseAndQuizNotifications = async (req, res) => {
+const sendCourseAndQuizNotifications = async (req, res) => {
   try {
     const now = moment();
     const notificationsSent = [];
@@ -105,3 +141,4 @@ exports.sendCourseAndQuizNotifications = async (req, res) => {
   }
 };
 
+module.exports = {getNotificationsByUserId, sendCourseAndQuizNotifications};

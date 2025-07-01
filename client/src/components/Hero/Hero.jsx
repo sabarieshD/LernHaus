@@ -8,8 +8,7 @@ const Hero = () => {
       <div className="hero-content">
         <div className="hero-text">
           <h1>
-            <span>Stay Curious And Explore</span>
-            <span>The World Around You</span>
+            <span>Stay curious and explore the world around you</span>
           </h1>
           <p>
             Discover amazing places, learn new skills, and grow with top-notch courses and experiences.

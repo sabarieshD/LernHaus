@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 import { useContext, useState } from "react";
 import { AuthContext } from "@/context/auth-context";
 import { Menu, X } from "lucide-react"; // Icons for menu toggle
-import navbarLogo from "@/assets/navbar-logo.png";
+import navbarLogo from "@/assets/LMS_LOGO.png";
 import notificationIcon from "@/assets/Notification.png";
 import profileIcon from "@/assets/Profile.png";
 
@@ -22,7 +22,10 @@ function StudentViewCommonHeader() {
       {/* Left Section - Logo */}
       <div className="flex items-center">
         <Link to="/home">
-          <img className="w-[60px] md:w-[80px]" src={navbarLogo} alt="Logo" />
+          <span  className="flex items-center space-x-2">
+            <img className="w-[60px] md:w-[80px]" src={navbarLogo} alt="Logo" />
+            <p className="text-xl font-semibold">Learning Management System</p>
+          </span>
         </Link>
       </div>
 
@@ -46,7 +49,7 @@ function StudentViewCommonHeader() {
 
         {/* Icons & Logout Button (Desktop Only) */}
         <div className="hidden md:flex items-center gap-4">
-          <Link to="/notifications">
+          <Link to="/student/notifications">
             <img className="w-[30px] h-[30px]" src={notificationIcon} alt="Notifications" />
           </Link>
           <Link to="/profile">
@@ -80,7 +83,7 @@ function StudentViewCommonHeader() {
             MY COURSES
           </Link>
           <div className="flex items-center justify-between pt-4">
-            <Link to="/notifications">
+            <Link to="/student/notifications">
               <img className="w-[30px] h-[30px]" src={notificationIcon} alt="Notifications" />
             </Link>
             <Link to="/profile">

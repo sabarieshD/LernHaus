@@ -1,0 +1,40 @@
+/* Container for Bubble Chart */
+.bubble-chart-container {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 24px;
+    width: 40%;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Title styling */
+.bubble-chart-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .bubble-chart-container {
+        width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .bubble-chart-container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .bubble-chart-container {
+        width: 100%;
+        padding: 16px;
+    }
+}

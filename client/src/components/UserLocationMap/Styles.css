@@ -1,0 +1,33 @@
+.user-location-map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+/* Wrapper for the map */
+.user-location-map {
+    width: 94%; /* Ensure full width */
+    max-width: none; /* Remove any restriction */
+    height: 490px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .user-location-map {
+        height: 400px; /* Adjust height for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .user-location-map {
+        height: 300px; /* Further reduce height for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .user-location-map {
+        height: 250px; /* Compact height for mobile */
+    }
+}

@@ -244,21 +244,33 @@ const viewUserDetails = async (req, res) => {
 };
 
 
+
 const updateUserDetails = async (req, res) => {
   try {
     const userId = req.user._id;
     const { userName, userEmail, collegeName, department, domainOfInterest, whatsappNumber } = req.body;
 
+    // Validate required fields
     if (!userName || !userEmail || !collegeName || !department || !domainOfInterest || !whatsappNumber) {
       return res.status(400).json({
         success: false,
-        message: "All fields (userName, userEmail, collegeName, department, domainOfInterest, whatsappNumber) are required.",
+        message: "All fields are required.",
       });
     }
 
+    // Check if user exists
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found.",
+      });
+    }
+
+    // Check if new email or username already exists (excluding current user)
     const existingUser = await User.findOne({
       $or: [{ userEmail }, { userName }],
-      _id: { $ne: userId },
+      _id: { $ne: userId }, // Exclude current user
     });
 
     if (existingUser) {
@@ -268,29 +280,34 @@ const updateUserDetails = async (req, res) => {
       });
     }
 
-    const updatedUser = await User.findByIdAndUpdate(
-      userId, 
-      { userName, userEmail, collegeName, department, domainOfInterest, whatsappNumber },
-      { new: true }
-    );
+    // Update user details
+    user.userName = userName;
+    user.userEmail = userEmail;
+    user.collegeName = collegeName;
+    user.department = department;
+    user.domainOfInterest = domainOfInterest;
+    user.whatsappNumber = whatsappNumber;
 
-    if (!updatedUser) {
-      return res.status(404).json({
-        success: false,
-        message: "User not found.",
-      });
-    }
+    await user.save();
 
     return res.status(200).json({
       success: true,
       message: "User details updated successfully.",
-      data: updatedUser,
+      data: {
+        _id: user._id,
+        userName: user.userName,
+        userEmail: user.userEmail,
+        collegeName: user.collegeName,
+        department: user.department,
+        domainOfInterest: user.domainOfInterest,
+        whatsappNumber: user.whatsappNumber,
+      },
     });
   } catch (error) {
     console.error("Error updating user details:", error);
     return res.status(500).json({
       success: false,
-      message: "Server error during updating user details.",
+      message: "Server error while updating user details.",
     });
   }
 };

@@ -1,0 +1,49 @@
+.bubble-userlocationmap {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 3%;
+    width: 100%;
+    gap: 2%;
+}
+
+/* Assign specific widths for larger screens */
+.bubble-userlocationmap > :first-child {
+    flex: 0 0 40%; /* InteractiveBubbleChart takes 40% */
+    max-width: 40%;
+}
+
+.bubble-userlocationmap > :last-child {
+    flex: 0 0 60%; /* UserLocationMap takes 60% */
+    max-width: 60%;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .bubble-userlocationmap {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center;
+        gap: 20px;
+    }
+
+    .bubble-userlocationmap > * {
+        width: 100%; /* Full width */
+        max-width: 100%; /* Remove any width restriction */
+    }
+}
+
+/* Small Screens (Phones) */
+@media (max-width: 600px) {
+    .bubble-userlocationmap {
+        flex-direction: column;
+        gap: 16px; /* Reduced gap for mobile */
+        margin-bottom: 5%;
+    }
+
+    .bubble-userlocationmap > * {
+        width: 100%; /* Ensure full width */
+        max-width: none; /* Remove width limitation */
+        flex-grow: 1; /* Allow element to expand */
+    }
+}

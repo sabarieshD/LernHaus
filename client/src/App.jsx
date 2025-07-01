@@ -14,6 +14,8 @@ import PaypalPaymentReturnPage from "./pages/student/payment-return";
 import StudentCoursesPage from "./pages/student/student-courses";
 import StudentViewCourseProgressPage from "./pages/student/course-progress";
 import UserDetails from "./pages/student/UserDetails/UserDetails";
+import Notification from "./components/Student-Notification/Notification";
+import Quiz from "./components/instructor-view/Quiz/Quiz";
 
 function App() {
   const { auth } = useContext(AuthContext);
@@ -61,6 +63,26 @@ function App() {
         }
       />
       <Route
+        path="/instructor/send-notification"
+        element={
+          <RouteGuard
+            element={<Notification />}
+            authenticated={auth?.authenticate}
+            user={auth?.user}
+          />
+        }
+      />
+      <Route
+        path="/instructor/course/"
+        element={
+          <RouteGuard
+            element={<Quiz />}
+            authenticated={auth?.authenticate}
+            user={auth?.user}
+          />
+        }
+      />
+      <Route
         path="/"
         element={
           <RouteGuard
@@ -76,6 +98,16 @@ function App() {
         <Route
           path="course/details/:id"
           element={<StudentViewCourseDetailsPage />}
+        />
+        <Route
+          path="/student/notifications"
+          element={
+            <RouteGuard
+              element={<Notification />}
+              authenticated={auth?.authenticate}
+              user={auth?.user}
+            />
+          }
         />
         <Route path="payment-return" element={<PaypalPaymentReturnPage />} />
         <Route path="profile" element={<UserDetails />} />

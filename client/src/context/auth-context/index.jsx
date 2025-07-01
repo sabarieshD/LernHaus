@@ -24,7 +24,9 @@ export default function AuthProvider({ children }) {
     const data = await loginService(signInFormData);
     
     sessionStorage.setItem("userEmail", data.data.user.userEmail);
+    sessionStorage.setItem("userId", data.data.user._id);
     console.log(sessionStorage.getItem("userEmail"));
+    console.log(sessionStorage.getItem("userId"));
 
     console.log("before datadatadata" , sessionStorage.getItem("userEmail"));   
     console.log(data, "datadatadatadatadata");

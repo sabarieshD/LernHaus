@@ -24,7 +24,7 @@ const DiscussionForumRoutes = require("./routes/Discussion_Forum/Discussion_Foru
 const NotificationRoutes = require("./routes/Notification-routes/Notification");
 
 // Passport configuration
-// require("./config/passport"); // Assuming passport config is in a separate file
+// require("./config/passport"); 
 
 const app = express();
 const server = createServer(app); // Use HTTP server for Socket.IO
@@ -81,7 +81,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Route configuration
+// Route config
 app.use("/auth", authRoutes);
 app.use("/media", mediaRoutes);
 app.use("/instructor/course", instructorCourseRoutes);
@@ -105,7 +105,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Socket.IO logic
+
 io.on("connection", (socket) => {
   console.log(`User connected: ${socket.id}`);
 

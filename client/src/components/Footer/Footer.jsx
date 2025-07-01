@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-top">
         <div className="footer-column">
-          <h3 className="logo">Curious<span>Wings</span></h3>
+          <h3 className="logo"><span>LMS</span></h3>
           <p>A learning platform based on practical knowledge.</p>
           <div className="social-icons">
             <a href="#" aria-label="Facebook">
@@ -41,7 +41,7 @@ const Footer = () => {
         <div className="footer-column">
           <h4>Flexible Learning</h4>
           <img
-            src="https://via.placeholder.com/100x60" // Replace with your world map image URL
+            src="../../assets/Globe_Map.png" // Replace with your world map image URL
             alt="World map"
           />
         </div>

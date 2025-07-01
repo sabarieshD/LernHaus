@@ -1,7 +1,8 @@
 import axios from "axios";
+const server_url = import.meta.env.VITE_SERVER_URL;
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: `${server_url}`,
 });
 
 axiosInstance.interceptors.request.use(

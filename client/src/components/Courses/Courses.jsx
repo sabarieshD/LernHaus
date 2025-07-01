@@ -1,39 +1,54 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import "./Courses.css";
 
 const Courses = () => {
-  const [courses, setCourses] = useState([]); // Default to an empty array
+  const [courses, setCourses] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
+  const server_url = import.meta.env.VITE_SERVER_URL;
 
   useEffect(() => {
-    const fetchCourses = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/student/course/get");
-        console.log(response.data.data);
-        const coursesData = response.data.data;
-        setCourses(coursesData);
+        // Fetch courses and reviews in parallel
+        const [coursesResponse, reviewsResponse] = await Promise.all([
+          axios.get(`${server_url}/student/course/get`),
+          axios.get(`${server_url}/courseReview/`)
+        ]);
+
+        setCourses(coursesResponse.data.data);
+        setReviews(reviewsResponse.data.reviews);
       } catch (err) {
         console.error("API Error:", err);
-        setError("Failed to fetch courses");
+        setError("Failed to fetch data");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchCourses();
+    fetchData();
   }, []);
 
-  // Handle navigation to course details
   const handleCourseNavigate = (courseId) => {
-    navigate(`/course/details/${courseId}`); // Navigate to course details page
+    navigate(`/course/details/${courseId}`);
   };
 
   if (loading) return <p>Loading courses...</p>;
   if (error) return <p>{error}</p>;
+
+  // Merge course data with reviews
+  const mergedCourses = courses.map(course => {
+    const courseReview = reviews.find(review => review.courseId === course._id) || {};
+    return {
+      ...course,
+      averageRating: courseReview.averageRating,
+      totalReviews: courseReview.totalReviews
+    };
+  });
 
   return (
     <div className="courses">
@@ -41,13 +56,13 @@ const Courses = () => {
         Discover Popular Courses
       </h1>
       <div className="course-list">
-        {courses.length > 0 ? (
-          courses.map((course) => (
+        {mergedCourses.length > 0 ? (
+          mergedCourses.map((course) => (
             <div
               key={course._id}
               className="course-card"
-              onClick={() => handleCourseNavigate(course._id)} // Add click handler
-              style={{ cursor: "pointer" }} // Add pointer cursor
+              onClick={() => handleCourseNavigate(course._id)}
+              style={{ cursor: "pointer" }}
             >
               {course.image && (
                 <img
@@ -56,7 +71,19 @@ const Courses = () => {
                   className="course-image"
                 />
               )}
-              <p className="price">${course.pricing}</p>
+              <div className="course-info-container" style={{ display: "flex", justifyContent: "space-between" }}>
+                <div className="course-reviews" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                  {(
+                    <>
+                      <span className="rating">{course.averageRating ? course.averageRating : 0}★</span>
+                      <span className="review-count">({course.totalReviews? course.totalReviews : 0} reviews)</span>
+                    </>
+                  )}
+                </div>
+                <div className="course-price">
+                  <span className="price">${course.pricing}</span>
+                </div>
+              </div>
               <h3>{course.title}</h3>
               <p>{course.description}</p>
               <div className="card-bottom">
@@ -64,6 +91,7 @@ const Courses = () => {
                 <span>{course.primaryLanguage}</span>
                 <span>90+ hours</span>
               </div>
+              <br/>
             </div>
           ))
         ) : (
